@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Todo List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="angular-1.7.8/angular.min.js"></script>
+</head>
+
+<body>
+  <div ng-app="TableController", ng-controller="data_controller">
+    <div class="container" >
+      <table class="table table-hover" >
+          OderBy: 
+            <select ng-model="sortColumn" >
+                <option value="id">ID</option>
+                <option value="firstName">First Name</option>
+                <option value="lastName">Last Name</option>
+                <option value="email">Email</option>
+                <option value="gender">Gender</option>
+                <option value="birthday">Brithday</option>
+                <option value="salary">Salary</option>
+                <option value="phone">Phone</option>
+              </select>
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Tên bác sĩ</th>
+            <th scope="col">Thời gian</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ng-repeat="x in info | orderBy : sortColumn">
+            <th scope="row">{{ x.id}}</th>
+            <td>{{ x.firstName}}</td>
+            <td>{{ x.birthday| date:"dd/MM/y"}}</td>
+            <td>{{ x.phone | telephone}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="appjs/module.js"></script>
+  <script src="appjs/service.js"></script>
+  <script src="appjs/filter.js"></script>
+  <!-- <script src="namesController.js"></script> -->
+  <script src="appjs/controller.js"></script>
+</body>
+
+</html> 
